@@ -1,5 +1,5 @@
 package com.bankit.web.configurations;
-
+/*
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -76,6 +76,7 @@ public class SecurityConfig {
 
 
                 )
+
                 .exceptionHandling((exceptionHandling) ->
                         exceptionHandling
                                 .authenticationEntryPoint(((request, response, authException) ->
@@ -91,4 +92,8 @@ public class SecurityConfig {
             session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
         }
     }
+
+
 }
+
+ */

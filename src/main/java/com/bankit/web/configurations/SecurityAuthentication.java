@@ -1,5 +1,5 @@
 package com.bankit.web.configurations;
-
+/*
 import com.bankit.web.models.Client;
 import com.bankit.web.repositories.ClientRepository;
 import org.springframework.context.annotation.Bean;
@@ -45,3 +45,5 @@ public class SecurityAuthentication extends GlobalAuthenticationConfigurerAdapte
     }
 
 }
+
+ */
