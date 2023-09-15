@@ -20,8 +20,6 @@ public class BankItApplication {
         return (args) -> {
             // save a couple of customers
             clientRepository.save(new Client("Camila", "Balmaceda", "camilabal1@gmail.com", "hoLa32-"));
-            clientRepository.save(new Client("Fabian", "Sepulveda", "fabisepulveda@gmail.com", "pUyol21"));
-            clientRepository.save(new Client("Antonio", "Carcamo", "carcamo32@gmail.com", "Heeloow1-"));
 
         };
     }
