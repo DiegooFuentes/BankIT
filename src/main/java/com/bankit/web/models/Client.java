@@ -6,6 +6,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -40,6 +42,9 @@ public class Client {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    Set<Account> accounts = new HashSet<>();
 
     @PrePersist
     protected void onCreate() {
