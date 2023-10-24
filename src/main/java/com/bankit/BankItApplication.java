@@ -26,6 +26,8 @@ public class BankItApplication {
             // save a couple of customers
             Client client1 = clientRepository.save(new Client("Camila", "Balmaceda", "camilabal1@gmail.com", "hoLa32-"));
             accountRepository.save(new Account("VIN001", LocalDateTime.now(),127000.0,client1));
+            accountRepository.save(new Account("VIN002", LocalDateTime.now(),99000.0,client1));
+
             clientRepository.save(new Client("Fabian", "Jackson", "fabiqueza@gmail.com", "wo1lDs12"));
 
         };
