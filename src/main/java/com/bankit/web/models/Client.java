@@ -17,7 +17,6 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name = "clients")
-@Schema(description = "Class that represent a Client")
 public class Client {
 
     @Id
