@@ -7,7 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import static java.util.stream.Collectors.toList;
 
 @Getter
 @Setter
@@ -16,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor(force = true)
 @ToString
 @Entity
-@Table(name = "clients")
+@Table(name = "Client")
 public class Client {
 
     @Id
@@ -45,6 +48,9 @@ public class Client {
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     Set<Account> accounts = new HashSet<>();
 
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    Set<ClientLoan> clientLoans;
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
@@ -53,6 +59,10 @@ public class Client {
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = new Date();
+    }
+
+    public Set<ClientLoan> getLoans() {
+        return clientLoans;
     }
 
 }
