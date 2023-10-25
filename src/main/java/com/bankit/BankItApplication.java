@@ -1,11 +1,8 @@
 package com.bankit;
 
 import com.bankit.web.models.*;
-import com.bankit.web.repositories.ClientRepository;
-import com.bankit.web.repositories.AccountRepository;
+import com.bankit.web.repositories.*;
 
-import com.bankit.web.repositories.LoanRepository;
-import com.bankit.web.repositories.TransactionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +20,7 @@ public class BankItApplication {
     }
 
     @Bean
-    public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository) {
+    public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository) {
         return (args) -> {
             // save a couple of customers
             Client client1 = clientRepository.save(new Client("Camila", "Balmaceda", "camilabal1@gmail.com", "hoLa32-"));
@@ -37,7 +34,11 @@ public class BankItApplication {
 
             loanRepository.save(new Loan("Mortgage", 500000.0, List.of(12, 24, 36, 48, 60)));
             loanRepository.save(new Loan("Personal", 100000.0, List.of(6, 12, 24)));
-            loanRepository.save(new Loan("Car", 300000.0, List.of(6, 12, 24, 36)));
+            Loan loan1 = loanRepository.save(new Loan("Car", 300000.0, List.of(6, 12, 24, 36)));
+
+            clientLoanRepository.save(new ClientLoan(100.0, 6, client1, loan1));
+
+            clientLoanRepository.save(new ClientLoan(990.0, 24, client1, loan1));
 
 
         };
