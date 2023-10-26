@@ -51,6 +51,9 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     Set<ClientLoan> clientLoans;
 
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    Set<Card> cards;
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();
