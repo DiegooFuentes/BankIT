@@ -20,7 +20,7 @@ public class BankItApplication {
     }
 
     @Bean
-    public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository) {
+    public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
         return (args) -> {
             // save a couple of customers
             Client client1 = clientRepository.save(new Client("Camila", "Balmaceda", "camilabal1@gmail.com", "hoLa32-"));
@@ -40,6 +40,9 @@ public class BankItApplication {
 
             clientLoanRepository.save(new ClientLoan(990.0, 24, client1, loan1));
 
+            cardRepository.save(new Card( client1.getFirstName() + " " + client1.getLastName(),CardType.DEBIT, CardColor.GOLD, "1234 1234 1234 1234", "123", LocalDateTime.now(), LocalDateTime.now().plusYears(5), client1));
+
+            cardRepository.save(new Card( client1.getFirstName() + " " + client1.getLastName(),CardType.CREDIT, CardColor.TITANIUM, "9999 0000 9999 0000", "222", LocalDateTime.now(), LocalDateTime.now().plusYears(3), client1));
 
         };
     }
