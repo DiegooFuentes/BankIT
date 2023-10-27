@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET,"/web/**").hasAuthority("CLIENT")
                                 .requestMatchers(HttpMethod.GET,"/rest/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/api/clients").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
+
 
                                 /*
                                 .requestMatchers("/admin/").hasAuthority("ADMIN")
