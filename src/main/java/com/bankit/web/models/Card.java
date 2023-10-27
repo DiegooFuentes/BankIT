@@ -41,8 +41,20 @@ public class Card {
     private LocalDateTime fromDate;
 
     //@Getter(AccessLevel.NONE) //equals to JsonIgnore
-    @NonNull
+    //@NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
     private Client client;
+
+    //DELETE LATER
+    public Card(@NonNull String cardHolder, @NonNull CardType type, @NonNull CardColor color, @NonNull String number, @NonNull String cvv, @NonNull LocalDateTime thruDate, @NonNull LocalDateTime fromDate, Client client) {
+        this.cardHolder = cardHolder;
+        this.type = type;
+        this.color = color;
+        this.number = number;
+        this.cvv = cvv;
+        this.thruDate = thruDate;
+        this.fromDate = fromDate;
+        this.client = client;
+    }
 }

@@ -31,7 +31,7 @@ public class Account {
     private Double balance;
 
     @Getter(AccessLevel.NONE) //equals to JsonIgnore
-    @NonNull
+    //@NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
     private Client client;
@@ -39,5 +39,11 @@ public class Account {
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     Set<Transaction> transactions = new HashSet<>();
 
-
+    //DELETE LATER
+    public Account(@NonNull String number, @NonNull LocalDateTime creationDate, @NonNull Double balance, Client client) {
+        this.number = number;
+        this.creationDate = creationDate;
+        this.balance = balance;
+        this.client = client;
+    }
 }
