@@ -51,4 +51,10 @@ public class AccountServiceImpl implements AccountService{
         }
 
     }
+
+    @Override
+    public List<AccountDTO> getCurrentAccounts(String email) {
+        Client client = clientRepository.findByEmail(email);
+        return client.getAccounts().stream().map(AccountDTO::new).collect(toList());
+    }
 }

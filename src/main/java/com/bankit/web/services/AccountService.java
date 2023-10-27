@@ -13,5 +13,6 @@ public interface AccountService {
 
     public ResponseEntity<Object> createAccount(String email);
 
+    public List<AccountDTO> getCurrentAccounts(String email);
 
 }
