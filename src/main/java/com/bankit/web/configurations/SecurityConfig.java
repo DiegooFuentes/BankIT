@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -31,9 +32,10 @@ public class SecurityConfig {
                                 .requestMatchers("/web/js/index.js").permitAll()
                                 .requestMatchers("/web/css/style.css").permitAll()
                                 .requestMatchers("/web/css/", "/web/img/", "/web/js/").permitAll()
-                                .requestMatchers("/api/**").hasAuthority("CLIENT")
-                                .requestMatchers("/web/**").hasAuthority("CLIENT")
-                                .requestMatchers("/rest/**").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.GET,"/api/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.GET,"/web/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.GET,"/rest/**").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/api/clients").permitAll()
 
                                 /*
                                 .requestMatchers("/admin/").hasAuthority("ADMIN")
