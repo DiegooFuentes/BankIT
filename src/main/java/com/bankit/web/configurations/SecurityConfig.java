@@ -36,8 +36,11 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET,"/web/**").hasAuthority("CLIENT")
                                 .requestMatchers(HttpMethod.GET,"/rest/**").hasAuthority("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/api/clients").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
-                                .requestMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.POST, "/api/clients/current/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.GET, "/api/clients/current/**").hasAuthority("CLIENT")
+                                //.requestMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                                //.requestMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
+                                //.requestMatchers(HttpMethod.POST, "/api/clients/current/cards").hasAuthority("CLIENT")
 
 
 
