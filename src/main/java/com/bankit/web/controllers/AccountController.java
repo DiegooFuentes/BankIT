@@ -36,11 +36,10 @@ public class AccountController {
         return accountService.createAccount(authentication.getName());
     }
 
-    /*
     @GetMapping("/clients/current/accounts")
-    public List<AccountDTO> getCurrentAccounts() {
-
+    public List<AccountDTO> getCurrentAccounts(Authentication authentication) {
+        return accountService.getCurrentAccounts(authentication.getName());
     }
 
-     */
+
 }
