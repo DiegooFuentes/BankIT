@@ -3,10 +3,9 @@ package com.bankit.web.controllers;
 import com.bankit.web.dtos.ClientDTO;
 import com.bankit.web.services.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +30,19 @@ public class ClientController {
     public ClientDTO getClient(@PathVariable Long id) {
         return clientService.getClient(id);
     }
+
+    @PostMapping("/clients")
+    public ResponseEntity<Object> register(@RequestParam String firstName,
+                                           @RequestParam String lastName,
+                                           @RequestParam String email,
+                                           @RequestParam String password) {
+        return clientService.register(firstName, lastName, email, password);
+
+    }
+
+    @GetMapping("/clients/current")
+    public ClientDTO getClient(Authentication authentication) {
+        return clientService.getCurrentClient(authentication.getName());
+    }
+
 }
