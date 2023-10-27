@@ -1,12 +1,11 @@
 package com.bankit.web.configurations;
-/*
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -27,12 +26,33 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
+                                .requestMatchers("/web/index.html").permitAll()
+                                .requestMatchers("/web/index.html").permitAll()
+                                .requestMatchers("/web/js/index.js").permitAll()
+                                .requestMatchers("/web/css/style.css").permitAll()
+                                .requestMatchers("/web/css/", "/web/img/", "/web/js/").permitAll()
+                                .requestMatchers("/api/**").hasAuthority("CLIENT")
+                                .requestMatchers("/web/**").hasAuthority("CLIENT")
+                                .requestMatchers("/rest/**").hasAuthority("ADMIN")
+
+                                /*
+                                .requestMatchers("/admin/").hasAuthority("ADMIN")
+                                .requestMatchers("/api/**").hasAuthority("CLIENT")
+                                //.antMatchers("/api/**").permitAll()
+                                .requestMatchers("/web/**").hasAuthority("CLIENT")
+                                .requestMatchers("/rest/**").hasAuthority("ADMIN")
+                                //.antMatchers("/rest/**").permitAll()
+                                .requestMatchers("/").hasAuthority("CLIENT")
+                                 */
+                                /*
                                 .requestMatchers("/account/register").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/account/login").permitAll()
                                 .requestMatchers("/landing").permitAll()
                                 .requestMatchers("/account/system").hasAuthority("CLIENT")
                                 .requestMatchers(HttpMethod.POST, "/account/register").permitAll()
                                 .requestMatchers("/home").hasAuthority("CLIENT")
+
+                                 */
                 )
 
                 .csrf(AbstractHttpConfigurer::disable)
@@ -42,7 +62,7 @@ public class SecurityConfig {
                 )
                 .formLogin((formLogin) ->
                         formLogin
-                                .loginPage("/account/login")
+                                .loginPage("/api/login")
                                 .usernameParameter("email")
                                 .passwordParameter("password")
                                 .permitAll()
@@ -51,7 +71,7 @@ public class SecurityConfig {
                                     successResponse.put("message", "Login successful");
                                     res.setStatus(HttpServletResponse.SC_OK);
                                     res.setContentType("application/json");
-                                    res.sendRedirect("/home");
+                                    res.sendRedirect("/web/accounts.html");
                                     res.getWriter().write(new ObjectMapper().writeValueAsString(successResponse));
                                     clearAuthenticationAttributes(req);
                                 })
@@ -60,14 +80,14 @@ public class SecurityConfig {
                                     errorResponse.put("message", "Login failed");
                                     res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                                     res.setContentType("application/json");
-                                    res.sendRedirect("/account/login?error");
+                                    //res.sendRedirect("/account/login?error");
                                     res.getWriter().write(new ObjectMapper().writeValueAsString(errorResponse));
                                 })
                 )
                 .logout((logout) ->
                                 logout
                                         .logoutUrl("/api/logout")
-                                        .logoutSuccessUrl("/account/login")
+                                        .logoutSuccessUrl("/web/index.html")
                                         .invalidateHttpSession(true)
                                         .deleteCookies("JSESSIONID")
 
@@ -80,7 +100,7 @@ public class SecurityConfig {
                 .exceptionHandling((exceptionHandling) ->
                         exceptionHandling
                                 .authenticationEntryPoint(((request, response, authException) ->
-                                        response.sendRedirect("/landing")))
+                                        response.sendRedirect("/web/index.html")))
                 );
 
         return http.build();
@@ -95,5 +115,3 @@ public class SecurityConfig {
 
 
 }
-
- */
