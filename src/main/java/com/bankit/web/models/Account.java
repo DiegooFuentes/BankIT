@@ -30,7 +30,7 @@ public class Account {
     @NonNull
     private Double balance;
 
-    @Getter(AccessLevel.NONE) //equals to JsonIgnore
+    //@Getter(AccessLevel.NONE) //equals to JsonIgnore
     //@NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
