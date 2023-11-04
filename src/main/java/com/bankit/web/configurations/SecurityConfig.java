@@ -39,6 +39,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/api/clients/current/**").hasAuthority("CLIENT")
                                 .requestMatchers(HttpMethod.GET, "/api/clients/current/**").hasAuthority("CLIENT")
                                 .requestMatchers(HttpMethod.POST, "/api/transactions/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.GET, "/api/loans/**").hasAuthority("CLIENT")
+                                .requestMatchers(HttpMethod.POST, "/api/loans/**").hasAuthority("CLIENT")
 
                                 //.requestMatchers(HttpMethod.POST, "/api/clients/current/accounts").hasAuthority("CLIENT")
                                 //.requestMatchers(HttpMethod.GET, "/api/clients/current/accounts").hasAuthority("CLIENT")
