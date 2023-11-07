@@ -22,15 +22,11 @@ repositories {
 }
 
 bootRun {
-
     sourceResources sourceSets.main
-
 }
-
 bootJar {
     archiveFileName = 'homebanking.jar'
 }
-
 compileJava {
     options.annotationProcessorPath = configurations.compileClasspath
 }
