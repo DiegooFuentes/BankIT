@@ -50,6 +50,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
+
 }
 
 tasks.named('test') {
