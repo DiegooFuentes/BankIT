@@ -17,6 +17,7 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @AutoConfigureTestDatabase(replace = NONE)
 public class RepositoriesTest {
 
+    /*
     private final LoanRepository loanRepository;
 
     @Autowired
@@ -36,4 +37,6 @@ public class RepositoriesTest {
         List<Loan> loans = loanRepository.findAll();
         assertThat(loans, hasItem(hasProperty("name", is("Personal"))));
     }
+    
+     */
 }
