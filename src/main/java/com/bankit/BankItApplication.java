@@ -21,6 +21,7 @@ public class BankItApplication {
         SpringApplication.run(BankItApplication.class, args);
     }
 
+    /*
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -52,4 +53,6 @@ public class BankItApplication {
 
         };
     }
+
+     */
 }
