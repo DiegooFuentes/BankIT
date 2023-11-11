@@ -42,7 +42,7 @@ public class EmailNotificationService {
             message.setSubject("New transaction in your account");
 
             // Set the actual message
-            message.setText("Transaction succesfull");
+            message.setText("Transaction successful");
 
             // Send the message
             Transport.send(message);
